@@ -19,7 +19,11 @@ func testfunc(ctx *gin.Context) {
 	}
 
 	payload := ctx.QueryMap("payload")
-	fmt.Printf("%v", payload)
+	fmt.Printf("%v\n", payload)
+	for k, v := range payload {
+		fmt.Printf("---%s %s\n", k, v)
+	}
+
 }
 
 func main() {
