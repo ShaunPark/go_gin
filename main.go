@@ -22,7 +22,7 @@ func main() {
 	http.HandleFunc("/", func(wr http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPost: // 등록
-			var data interface{}
+			var data map[string]interface{}
 			json.NewDecoder(r.Body).Decode(&data) // 디코딩
 
 			fmt.Printf("%v\n", data)
