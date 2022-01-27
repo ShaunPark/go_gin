@@ -26,6 +26,7 @@ func main() {
 			json.NewDecoder(r.Body).Decode(&data) // 디코딩
 
 			fmt.Printf("%v\n", data)
+			fmt.Printf("%v\n", r.Body)
 		}
 	})
 	http.ListenAndServe("0.0.0.0:8080", nil)
