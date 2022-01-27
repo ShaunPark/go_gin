@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 
@@ -10,8 +11,12 @@ import (
 func testfunc(ctx *gin.Context) {
 	body := ctx.Request.Body
 	value, _ := ioutil.ReadAll(body)
+	var data map[string]interface{}
 
-	fmt.Printf("body: %s\n", value)
+	json.Unmarshal([]byte(value), &data)
+	for k, v := range data {
+		fmt.Printf("%s %s\n", k, v)
+	}
 }
 
 func main() {
