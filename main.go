@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 
@@ -11,12 +10,7 @@ import (
 func testfunc(ctx *gin.Context) {
 	body := ctx.Request.Body
 	value, _ := ioutil.ReadAll(body)
-	var data map[string]interface{}
-
-	json.Unmarshal([]byte(value), &data)
-	for k, v := range data {
-		fmt.Printf("%s %s\n", k, v)
-	}
+	fmt.Printf("%v\n", value)
 
 	payload := ctx.PostFormMap("payload")
 	fmt.Printf("%v\n", payload)
