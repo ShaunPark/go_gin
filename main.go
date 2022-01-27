@@ -1,21 +1,32 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"io/ioutil"
-
-	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
-func testfunc(ctx *gin.Context) {
-	body := ctx.Request.Body
-	value, _ := ioutil.ReadAll(body)
-	fmt.Printf("%v\n", string(value))
-}
+// func testfunc(ctx *gin.Context) {
+// 	body := ctx.Request.Body
+// 	value, _ := ioutil.ReadAll(body)
+// 	fmt.Printf("%v\n", string(value))
+// }
 
+// func main() {
+// 	router := gin.Default()
+
+// 	router.POST("/", testfunc)
+// 	router.Run("0.0.0.0:8080")
+// }
 func main() {
-	router := gin.Default()
+	http.HandleFunc("/", func(wr http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodPost: // 등록
+			var data interface{}
+			json.NewDecoder(r.Body).Decode(&data) // 디코딩
 
-	router.POST("/", testfunc)
-	router.Run("0.0.0.0:8080")
+			fmt.Printf("%v\n", data)
+		}
+	})
+	http.ListenAndServe("0.0.0.0:8080", nil)
 }
