@@ -9,6 +9,8 @@ import (
 
 func testfunc(ctx *gin.Context) {
 	body := ctx.Request.Body
+	fmt.Printf("%v\n", ctx.Request)
+
 	value, _ := ioutil.ReadAll(body)
 	fmt.Printf("%v\n", string(value))
 
