@@ -19,7 +19,7 @@ func testfunc(ctx *gin.Context) {
 	}
 
 	payload := ctx.QueryMap("payload")
-	fmt.Print(payload)
+	fmt.Printf("%v", payload)
 }
 
 func main() {
