@@ -30,7 +30,7 @@ func main() {
 			for k, v := range r.Form {
 				fmt.Printf("%s = %s", k, v)
 			}
-			fmt.Print("================")
+			fmt.Print("================\n")
 			fmt.Printf("%s", r.Form.Get("payload"))
 		}
 	})
