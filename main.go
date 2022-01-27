@@ -9,17 +9,8 @@ import (
 
 func testfunc(ctx *gin.Context) {
 	body := ctx.Request.Body
-	fmt.Printf("%v\n", ctx.Request.Body)
-
 	value, _ := ioutil.ReadAll(body)
 	fmt.Printf("%v\n", string(value))
-
-	payload := ctx.PostFormMap("payload")
-	fmt.Printf("%v\n", payload)
-	for k, v := range payload {
-		fmt.Printf("---%v %s\n", k, v)
-	}
-
 }
 
 func main() {
