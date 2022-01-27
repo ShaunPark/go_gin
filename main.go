@@ -17,6 +17,9 @@ func testfunc(ctx *gin.Context) {
 	for k, v := range data {
 		fmt.Printf("%s %s\n", k, v)
 	}
+
+	payload := ctx.QueryMap("payload")
+	fmt.Print(payload)
 }
 
 func main() {
