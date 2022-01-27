@@ -18,10 +18,10 @@ func testfunc(ctx *gin.Context) {
 		fmt.Printf("%s %s\n", k, v)
 	}
 
-	payload := ctx.QueryMap("payload")
+	payload := ctx.PostFormMap("payload")
 	fmt.Printf("%v\n", payload)
 	for k, v := range payload {
-		fmt.Printf("---%s %s\n", k, v)
+		fmt.Printf("---%v %s\n", k, v)
 	}
 
 }
