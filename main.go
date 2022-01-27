@@ -33,9 +33,9 @@ func main() {
 			payload := types.InteractiveMessage{}
 			json.Unmarshal([]byte(r.Form.Get("payload")), &payload)
 
-			fmt.Printf("User Name : %s", payload.User.UserName)
+			fmt.Printf("User Name : %s\n", payload.User.UserName)
 			for _, a := range payload.Actions {
-				fmt.Printf("Action value  : %s", a.Value)
+				fmt.Printf("Action value  : %s\n", a.Value)
 			}
 		}
 	})
