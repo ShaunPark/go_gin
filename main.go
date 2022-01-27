@@ -30,6 +30,8 @@ func main() {
 			for k, v := range r.Form {
 				fmt.Printf("%s = %s", k, v)
 			}
+			fmt.Print("================")
+			fmt.Printf("%s", r.Form.Get("payload"))
 		}
 	})
 	http.ListenAndServe("0.0.0.0:8080", nil)
