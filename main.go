@@ -33,9 +33,10 @@ func main() {
 			fmt.Printf("%v\n", data)
 			fmt.Printf("%v\n", r.Body)
 
-			r.ParseForm()              // Parses the request body
-			x := r.Form.Get("payload") // x will be "" if parameter is not set
-			fmt.Println(x)
+			r.ParseForm() // Parses the request body
+			for k, v := range r.Form {
+				fmt.Printf("%s = %s", k, v)
+			}
 		}
 	})
 	http.ListenAndServe("0.0.0.0:8080", nil)
