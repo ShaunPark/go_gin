@@ -1,8 +1,11 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/ShaunPark/go_gin/types"
 )
 
 // func testfunc(ctx *gin.Context) {
@@ -27,11 +30,13 @@ func main() {
 		switch r.Method {
 		case http.MethodPost:
 			r.ParseForm() // Parses the request body
-			for k, v := range r.Form {
-				fmt.Printf("%s = %s", k, v)
+			payload := types.InteractiveMessage{}
+			json.Unmarshal([]byte(r.Form.Get("payload")), &payload)
+
+			fmt.Printf("User Name : %s", payload.User.UserName)
+			for _, a := range payload.Actions {
+				fmt.Printf("Action value  : %s", a.Value)
 			}
-			fmt.Print("================\n")
-			fmt.Printf("%s", r.Form.Get("payload"))
 		}
 	})
 	http.ListenAndServe("0.0.0.0:8080", nil)
