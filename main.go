@@ -10,7 +10,7 @@ import (
 func testfunc(ctx *gin.Context) {
 	body := ctx.Request.Body
 	value, _ := ioutil.ReadAll(body)
-	fmt.Printf("%v\n", value)
+	fmt.Printf("%v\n", string(value))
 
 	payload := ctx.PostFormMap("payload")
 	fmt.Printf("%v\n", payload)
