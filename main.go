@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -26,13 +25,7 @@ type Payload struct {
 func main() {
 	http.HandleFunc("/", func(wr http.ResponseWriter, r *http.Request) {
 		switch r.Method {
-		case http.MethodPost: // 등록
-			data := Payload{}
-			json.NewDecoder(r.Body).Decode(&data) // 디코딩
-
-			fmt.Printf("%v\n", data)
-			fmt.Printf("%v\n", r.Body)
-
+		case http.MethodPost:
 			r.ParseForm() // Parses the request body
 			for k, v := range r.Form {
 				fmt.Printf("%s = %s", k, v)
