@@ -18,11 +18,16 @@ import (
 // 	router.POST("/", testfunc)
 // 	router.Run("0.0.0.0:8080")
 // }
+
+type Payload struct {
+	Payload string `json:"payload"`
+}
+
 func main() {
 	http.HandleFunc("/", func(wr http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPost: // 등록
-			var data map[string]interface{}
+			data := Payload{}
 			json.NewDecoder(r.Body).Decode(&data) // 디코딩
 
 			fmt.Printf("%v\n", data)
